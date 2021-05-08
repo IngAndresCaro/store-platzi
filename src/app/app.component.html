@@ -4,3 +4,14 @@
 <div *ngIf="title==='Nicolas'">
   esto es un div
 </div>
+
+<button (click)="addItem()">Add item</button>
+
+<ul>
+  <li *ngIf="items.length === 0">La lista esta vacia</li>
+  <li *ngFor="let name of items; index as i">
+    {{name}} {{i}}
+    <button (click)="deleteItem(i)">X</button>
+  </li>
+</ul>
+
