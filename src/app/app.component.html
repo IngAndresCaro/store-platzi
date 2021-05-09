@@ -1,7 +1,11 @@
-<input type="text" [(ngModel)]="title">
-<h1>{{title}}</h1>
+<div>
+  <input type="text" [(ngModel)]="title">
 
+  <h1>{{title}}</h1>
 
+  <input type="text" [(ngModel)]="power">
+  <p>{{power|exponential}}</p>
+</div>
 
 <div *ngIf="title==='Nicolas'">
   esto es un Nicolas
