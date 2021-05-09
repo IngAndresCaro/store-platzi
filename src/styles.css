@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.product-list{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+
+@media (min-width: 576px){
+    .product-list{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    } 
+}

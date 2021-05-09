@@ -1,4 +1,4 @@
-<input type="text" [(ngModel)]="title" >
+<input type="text" [(ngModel)]="title">
 <h1>{{title}}</h1>
 
 
@@ -32,9 +32,7 @@
   </li>
 </ul>
 
-<div *ngFor="let product of products">
-  <app-product (productClicked)="clickProduct($event)" [product]="product"></app-product>
+<div class="product-list">
+  <app-product *ngFor="let product of products" (productClicked)="clickProduct($event)" [product]="product">
+  </app-product>
 </div>
-
-
-
