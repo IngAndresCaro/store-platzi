@@ -1,0 +1,9 @@
+nav > a {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+nav > a.active {
+    background-color: chocolate;
+}
