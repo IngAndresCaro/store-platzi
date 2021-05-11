@@ -4,3 +4,4 @@
 <p>{{product.description |slice:0:11}}</p>
 <p>{{today |date:'shortDate'}}</p>
 <button (click)="addCart()">Agregar al carrito</button>
+<a [routerLink]="['/products', product.id]">Ver detalle</a>
