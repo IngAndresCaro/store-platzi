@@ -6,17 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./demo.component.css']
 })
 export class DemoComponent implements OnInit {
-
+  title = 'platzi-store';
+  items = ['nicolas', 'julian', 'andres'];
+  power = 10;
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  title = 'platzi-store';
-
-  items = ['nicolas', 'julian', 'andres'];
-
-  power = 10;
 
   addItem() {
     this.items.push('nuevo item');
