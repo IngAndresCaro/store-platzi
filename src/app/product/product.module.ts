@@ -7,7 +7,7 @@ import { ProductsComponent } from './components/products/products.component';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from './../shared/shared.module';
-import { MatButtonModule } from '@angular/material/button'
+import { MaterialModule } from './../material/material.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button'
     CommonModule,
     SharedModule,
     ProductRoutingModule,
-    MatButtonModule
+    MaterialModule
   ]
 })
 export class ProductModule {

@@ -16,6 +16,4 @@ import { SharedModule } from './../shared/shared.module';
     NotFoundRoutingModule
   ]
 })
-export class PageNotFoundModule {
-
-}
+export class PageNotFoundModule {}

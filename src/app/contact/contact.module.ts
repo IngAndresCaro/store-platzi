@@ -16,6 +16,4 @@ import { SharedModule } from './../shared/shared.module';
     ContactRoutingModule
   ]
 })
-export class ContactModule {
-
-}
+export class ContactModule {}
