@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "flexboxgrid": "^6.3.1",
     "rxjs": "~6.6.0",
     "swiper": "^6.5.9",
     "tslib": "^2.0.0",
