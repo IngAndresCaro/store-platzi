@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../../../product/components/product.model';
+import { Product } from '../../model/product.model';
 import { environment } from './../../../../environments/environment';
 
 @Injectable({
@@ -12,23 +12,19 @@ export class ProductsService {
     private http: HttpClient
   ) { }
 
-    getAllProducts() {
+  getAllProducts() {
     return this.http.get<Product[]>(`${environment.url_api}/products/`);
   }
- 
   getProduct(id: string) {
     return this.http.get<Product>(`${environment.url_api}/products/${id}`);
   }
-  
   createProduct(product: Product) {
-    return this.http.post(`${environment.url_api}/products/`, product)
+    return this.http.post(`${environment.url_api}/products/`, product);
   }
-
-  updateProduct(id: string, changes: Partial<Product>){
+  updateProduct(id: string, changes: Partial<Product>) {
     return this.http.put(`${environment.url_api}/products/${id}`, changes);
   }
-
-  deleteProduct(id: string){
+  deleteProduct(id: string) {
     return this.http.delete(`${environment.url_api}/products/${id}`);
   }
 }

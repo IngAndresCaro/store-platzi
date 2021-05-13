@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Product } from './../product.model';
+import { Product } from '../../../core/model/product.model';
 import { ProductsService } from './../../../core/services/products/products.service';
 
 @Component({
@@ -21,7 +21,6 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       this.fetchProduct(id);
-      //this.product = this.producsService.getProduct(id);
     });
   }
 
@@ -35,10 +34,10 @@ export class ProductDetailComponent implements OnInit {
   createProduct() {
     const newProduct: Product = {
       id: '100',
-      title: "nuevo desde angular",
-      image: "assets/images/hoodie.png",
+      title: 'nuevo desde angular',
+      image: 'assets/images/hoodie.png',
       price: 30000,
-      description: "nuevo pruducto"
+      description: 'nuevo pruducto'
     };
     this.producsService.createProduct(newProduct)
       .subscribe(product => {
@@ -46,19 +45,19 @@ export class ProductDetailComponent implements OnInit {
       });
   }
 
-  updateProduct(){
+  updateProduct() {
     const updateProduct: Partial<Product> = {
       price: 55555,
-      image: "assets/images/hoodie.png",
-      description: "edicion titulo"
+      image: 'assets/images/hoodie.png',
+      description: 'edicion titulo'
     };
-    this.producsService.updateProduct('100',updateProduct)
+    this.producsService.updateProduct('100', updateProduct)
       .subscribe(product => {
         console.log(product);
       });
   }
 
-  deleteProduct(){
+  deleteProduct() {
     this.producsService.deleteProduct('100')
       .subscribe(product => {
         console.log(product);
