@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnIni
 
 import { Product } from '../../../core/model/product.model';
 
+import { CartService } from './../../../core/services/cart/cart.service';
+
 
 @Component({
     selector: 'app-product',
@@ -16,7 +18,9 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
 
     today = new Date();
 
-    constructor() {
+    constructor(
+        private cartService: CartService
+    ) {
         console.log('1. constructor');
     }
 
@@ -39,6 +43,6 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
 
     addCart() {
         console.log('añadir al carrito');
-        this.productClicked.emit(this.product.id);
+        this.cartService.addCart(this.product);
     }
 }
