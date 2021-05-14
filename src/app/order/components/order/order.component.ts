@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs'
 
-import { Product } from './../../../core/model/product.model';
-import { CartService } from './../../../core/services/cart/cart.service'
+import { Product } from '@core/model/product.model';
+import { CartService } from '@core/services/cart/cart.service'
 
 
 @Component({

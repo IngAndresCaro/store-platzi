@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 
-import { CartService } from './../../../core/services/cart/cart.service';
+import { CartService } from '@core/services/cart/cart.service';
 
 @Component({
   selector: 'app-header',
