@@ -1,5 +1,5 @@
 <div class="product-form-style">
-    <form [formGroup]="form" (ngSubmit)="saveProduct($event)" >
+    <form [formGroup]="form" (ngSubmit)="saveProduct($event)">
         <mat-card class="product-form-mat-card">
             <h2>Producto</h2>
             <mat-card-content>
@@ -36,9 +36,16 @@
                         </mat-form-field>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <img *ngIf="image$ | async as image" [src]="image" alt="">
+                        <input type="file" (change)="uploadFile($event)">
+                    </div>
+                </div>
             </mat-card-content>
             <mat-card-actions>
-                <button class="button-card-guardar" [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>
+                <button class="button-card-guardar" [disabled]="form.invalid" mat-raised-button
+                    type="submit">Guardar</button>
             </mat-card-actions>
         </mat-card>
     </form>
