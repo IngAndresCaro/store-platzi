@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../../model/product.model';
 import { environment } from './../../../../environments/environment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 
 interface User {
@@ -22,24 +22,40 @@ export class ProductsService {
   ) { }
 
   getAllProducts() {
-    return this.http.get<Product[]>(`${environment.url_api}/products/`);
+    return this.http.get<Product[]>(`${environment.url_api}/products/`)
+    .pipe(
+      catchError(this.handleError));
   }
+
   getProduct(id: string) {
-    return this.http.get<Product>(`${environment.url_api}/products/${id}`);
+    return this.http.get<Product>(`${environment.url_api}/products/${id}`)
+    .pipe(
+      catchError(this.handleError));
   }
+
   createProduct(product: Product) {
-    return this.http.post(`${environment.url_api}/products/`, product);
+    return this.http.post(`${environment.url_api}/products/`, product)
+    .pipe(
+      catchError(this.handleError));
   }
+
   updateProduct(id: string, changes: Partial<Product>) {
-    return this.http.put(`${environment.url_api}/products/${id}`, changes);
+    return this.http.put(`${environment.url_api}/products/${id}`, changes)
+    .pipe(
+      catchError(this.handleError));
   }
+  
   deleteProduct(id: string) {
-    return this.http.delete(`${environment.url_api}/products/${id}`);
+    return this.http.delete(`${environment.url_api}/products/${id}`)
+    .pipe(
+      catchError(this.handleError));
   }
 
   //En modo de ejemplo
   getRandomUsers(): Observable<User[]> {
-    return this.http.get('https://randomuser.me/api/?results=2').pipe(
+    return this.http.get('https://randomusasder.me/api/?resudasdlts=2')
+    .pipe(
+      catchError(this.handleError),
       map((response: any) => response.results.map(user => {
         return {
           email: user.email,
@@ -48,5 +64,10 @@ export class ProductsService {
         } as User;
       }))
     );
-  } 
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+    return throwError('Ups Algo Salio Mal')
+  }
 }
