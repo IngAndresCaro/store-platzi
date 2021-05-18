@@ -5,6 +5,9 @@ import { ProductsService } from '@core/services/products/products.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
+import * as FileSaver from 'file-saver';
+
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -16,14 +19,14 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private producsService: ProductsService
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
     this.product$ = this.route.params
       .pipe(
         switchMap((params: Params) => {
-          return this.producsService.getProduct(params.id)
+          return this.productsService.getProduct(params.id)
         })
       );
   }
@@ -36,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
       price: 30000,
       description: 'nuevo pruducto'
     };
-    this.producsService.createProduct(newProduct)
+    this.productsService.createProduct(newProduct)
       .subscribe(product => {
         console.log(product);
       });
@@ -48,21 +51,21 @@ export class ProductDetailComponent implements OnInit {
       image: 'assets/images/hoodie.png',
       description: 'edicion titulo'
     };
-    this.producsService.updateProduct('100', updateProduct)
+    this.productsService.updateProduct('100', updateProduct)
       .subscribe(product => {
         console.log(product);
       });
   }
 
   deleteProduct() {
-    this.producsService.deleteProduct('100')
+    this.productsService.deleteProduct('100')
       .subscribe(product => {
         console.log(product);
       });
   }
 
   getRandonUsers() {
-    this.producsService.getRandomUsers()
+    this.productsService.getRandomUsers()
       .subscribe(
         users => {
           console.log(users);
@@ -71,5 +74,14 @@ export class ProductDetailComponent implements OnInit {
           console.error(error);
         }
       );
+  }
+
+  getFile() {
+    this.productsService.getFile()
+    .subscribe(content => {
+      console.log(content);
+      const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+      FileSaver.saveAs(blob, 'hello world.txt');
+    });
   }
 }
