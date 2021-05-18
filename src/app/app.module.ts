@@ -17,6 +17,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from './../environments/environment';
 
+import * as Sentry from '@sentry/browser';
+
+//https://sentry.io/organizations/sofka/projects/ manejo de errores
+Sentry.init({
+  dsn: "https://f66ca7b49da1447199945e351366aed0@o685997.ingest.sentry.io/5772686",
+});
+
 @NgModule({
   declarations: [
     AppComponent,
