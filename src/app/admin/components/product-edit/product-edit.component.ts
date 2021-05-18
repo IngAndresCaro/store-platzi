@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MyValidators } from './../../../utils/validators'
+import { MyValidators } from './../../../utils/validators';
 
 import { ProductsService } from '@core/services/products/products.service';
 
@@ -21,17 +21,17 @@ export class ProductEditComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute
   ) {
-    this.buildForm()
+    this.buildForm();
   }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => {
       this.id = params.id;
       this.productsService.getProduct(this.id)
-      .subscribe(product => {
-        this.form.patchValue(product);
-      })
-    })
+        .subscribe(product => {
+          this.form.patchValue(product);
+        });
+    });
   }
 
   saveProduct(event: Event) {
@@ -53,12 +53,10 @@ export class ProductEditComponent implements OnInit {
       image: [''],
       description: ['', [Validators.required]]
 
-    })
+    });
   }
 
-  get priceField(){
-    return this.form.get('price')
+  get priceField() {
+    return this.form.get('price');
   }
-
 }
-

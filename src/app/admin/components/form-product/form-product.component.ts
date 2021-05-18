@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MyValidators } from './../../../utils/validators';
-import { finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators';
 import { ProductsService } from '@core/services/products/products.service';
 import { Observable } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class FormProductComponent implements OnInit {
     private router: Router,
     private storage: AngularFireStorage
   ) {
-    this.buildForm()
+    this.buildForm();
   }
 
   ngOnInit() {
@@ -52,8 +52,8 @@ export class FormProductComponent implements OnInit {
         finalize(() => {
           this.image$ = fileRef.getDownloadURL();
           this.image$.subscribe(url => {
-            this.form.get('image').setValue(url)
-          })
+            this.form.get('image').setValue(url);
+          });
         })
       ).subscribe();
   }
@@ -65,11 +65,10 @@ export class FormProductComponent implements OnInit {
       price: ['', [Validators.required, MyValidators.isPriceValid]],
       image: ['', [Validators.required]],
       description: ['', [Validators.required]]
-
-    })
+    });
   }
 
   get priceField() {
-    return this.form.get('price')
+    return this.form.get('price');
   }
 }
