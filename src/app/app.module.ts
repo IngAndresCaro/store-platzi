@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 import { AppRoutingModule } from './app-routin.module';
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ Sentry.init({
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    QuicklinkModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

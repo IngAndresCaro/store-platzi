@@ -22,11 +22,13 @@
                         <mat-form-field>
                             <input placeholder="Precio" formControlName="price" matInput type="number">
                         </mat-form-field>
+
                         <div *ngIf="priceField.errors && priceField.dirty">
                             <p *ngIf="priceField.hasError('price_invalid')">Este campo No puede ser mayor a $10.000.000
                             </p>
                             <p *ngIf="priceField.hasError('required')">Este campo es requerido</p>
                         </div>
+
                     </div>
                 </div>
                 <div class="row">
